@@ -9,91 +9,135 @@ Distancia	  | Con SUBE registrada   | Con SUBE sin registrar
 */
 
 boton.addEventListener("click", () => {
-  let km = parseFloat(distancia.value);
-  let estaRegistrada = registrada.value;
-  let precio = 0;
-  
- 
-  if (km <= 3) {
-      if (estaRegistrada == "si") {
-          precio = 753.74;
-     
-      }
-  } else if (km <= 3) {
-      if (estaRegistrada == "no") {
-          precio = 1198.45;
-      } 
-  } else if (km <= 3) {
-      if (estaRegistrada == "tarifa social") {
-          precio = 339.18;
-      } else {
-          precio = 708.01;
-      }
-  } else if (km <= 27) {
-      if (estaRegistrada == "si") {
-          precio = 477.17;
-      } else {
-          precio = 758.70;
-      }
-  } else {
-     
-      if (estaRegistrada == "si") {
-          precio = 508.83;
-      } else {
-          precio = 809.04;
-      }
-  }
-  
-
-  tarifa.innerText = "El valor del boleto es: $" + precio;
-
-
-tarifa.innerText = "El valor del boleto es: $" + precio.toFixed(2);
-});
-
-boton.addEventListener("click", () => {
-    let km = parseFloat(distancia.value);
-    let noEstaRegistrada = registrada.value;
-    let precio = 0;
+    let EstadoValor = registrada.value;
+    let KilometrosValor = Number(distancia.value);
+    let TransporteValor = tipodeColectivo.value;
     
-   
-    if (km <= 3) {
-        if (noEstaRegistrada == "no") {
-            precio = 371.13;
+    if (TransporteValor === "C.A.B.A") {
+      if (KilometrosValor >= 0 && KilometrosValor <= 3) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$753,74";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$339,18";
         } else {
-            precio = 590.10;
+          tarifa.innerText = "$1.198,45";
         }
-    } else if (km <= 6) {
-        if (estaRegistrada == "si") {
-            precio = 413.44;
+      } else if (KilometrosValor > 3 && KilometrosValor <= 6) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$837,52";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$376,88";
         } else {
-            precio = 657.37;
+          tarifa.innerText = "$1.331,66";
         }
-    } else if (km <= 12) {
-        if (estaRegistrada == "si") {
-            precio = 445.29;
+      } else if (KilometrosValor > 6 && KilometrosValor <= 12) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$902,04";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$405,91";
         } else {
-            precio = 708.01;
+          tarifa.innerText = "$1.434,24";
         }
-    } else if (km <= 27) {
-        if (estaRegistrada == "si") {
-            precio = 477.17;
+      } else if (KilometrosValor > 12 && KilometrosValor <= 27) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$966,61";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$434,97";
         } else {
-            precio = 758.70;
+          tarifa.innerText = "$1.536,91";
         }
-    } else {
-       
-        if (estaRegistrada == "si") {
-            precio = 508.83;
-        } else {
-            precio = 809.04;
-        }
+      } else if (KilometrosValor > 27) {
+        tarifa.innerText = "ERROR";
+      }
     }
-    
   
-    tarifa.innerText = "El valor del boleto es: $" + precio;
+    if (TransporteValor === "Provincia") {
+      if (KilometrosValor >= 0 && KilometrosValor <= 3) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$968,57";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$435,85";
+        } else {
+          tarifa.innerText = "$1.937,14";
+        }
+      } else if (KilometrosValor > 3 && KilometrosValor <= 6) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$1.089,64";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$490,33";
+        } else {
+          tarifa.innerText = "$2.179,28";
+        }
+      } else if (KilometrosValor > 6 && KilometrosValor <= 12) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$1.210,71";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$544.81";
+        } else {
+          tarifa.innerText = "$2.421,42";
+        }
+      } else if (KilometrosValor > 12 && KilometrosValor <= 27) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$1.452,85";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$653.78";
+        } else {
+          tarifa.innerText = "$ 2.905,70";
+        }
+      } else if (KilometrosValor > 27) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$1.708,07";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$768.63";
+        } else {
+          tarifa.innerText = "$3.416,14";
+        }
+      }
+    }
   
+    if (TransporteValor === "Nacional") {
+      if (KilometrosValor >= 0 && KilometrosValor <= 3) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$700";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$315";
+        } else {
+          tarifa.innerText = "$1.113";
+        }
+      } else if (KilometrosValor > 3 && KilometrosValor <= 6) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$779,78";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$350,90";
+        } else {
+          tarifa.innerText = "$1.239,85";
+        }
+      } else if (KilometrosValor > 6 && KilometrosValor <= 12) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$839,86";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$377,93";
+        } else {
+          tarifa.innerText = "$1.335,38";
+        }
+      } else if (KilometrosValor > 12 && KilometrosValor <= 27) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$899,99";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$404,99";
+        } else {
+          tarifa.innerText = "$1.430,98";
+        }
+      } else if (KilometrosValor > 27) {
+        if (EstadoValor === "si") {
+          tarifa.innerText = "$959,71";
+        } else if (EstadoValor === "social") {
+          tarifa.innerText = "$431,86";
+        } else {
+          tarifa.innerText = "$1.525,94";
+        }
+      }
+    }
   
-  tarifa.innerText = "El valor del boleto es: $" + precio.toFixed(2);
   });
-
+  
